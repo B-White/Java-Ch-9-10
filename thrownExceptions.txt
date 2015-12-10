@@ -1,0 +1,49 @@
+public class InvalidEmployeeId extends Exception
+{
+	private static final long serialVersionUID = 1L;
+
+	public InvalidEmployeeId()
+	{
+		super("Error: Employee Id!!!");
+	}
+}
+
+public class InvalidEmployeeName extends Exception
+{
+	private static final long serialVersionUID = 1L;
+	
+	public InvalidEmployeeName()
+	{
+		super("Error: You did not enter a name.");
+	}
+}
+
+public class InvalidHours extends Exception
+{
+	private static final long serialVersionUID = 1L;
+
+	public InvalidHours()
+	{
+		super("Error: You did not enter a valid number of hours!!!");
+	}
+	
+	public InvalidHours(int hours)
+	{
+		super("Error: Invalid number entered: " + hours);
+	}
+}
+
+public class InvalidPay extends Exception
+{
+	private static final long serialVersionUID = 1L;
+
+	public InvalidPay()
+	{
+		super("Error: Pay was not correct!!!");
+	}
+	
+	public InvalidPay(double pay)
+	{
+		super("Error: Pay was either negative or above $25.00 you entered: " + pay);
+	}
+}

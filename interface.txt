@@ -1,0 +1,74 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class MonthlySalesTax extends JFrame
+{
+	private static final long serialVersionUID = 1L;
+	
+	final double STATE_TAX = .04;
+	final double COUNTY_TAX = .02;
+	final int WINDOW_WIDTH = 350, WINDOW_HEIGHT = 100;
+	
+	private JLabel messageLabel;
+	private JTextField totalSales;
+	private JButton calcTax;
+	private JPanel panel;
+
+	private MonthlySalesTax() 
+	{
+		super("Monthly Sales Tax");
+		setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		buildPanel();
+		add(panel);
+		setVisible(true);
+	}
+	
+	public void buildPanel()
+	{
+		messageLabel = new JLabel("What were the total sales for the month?");
+		totalSales = new JTextField(10);
+		calcTax = new JButton("Calculate Tax");
+		
+		calcTax.addActionListener(new calcTaxListener());
+		
+		panel = new JPanel();
+		
+		panel.add(messageLabel);
+		panel.add(totalSales);
+		panel.add(calcTax);
+	}
+	
+	private class calcTaxListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			DecimalFormat formatter = new DecimalFormat("$#,##0.00");
+			
+			String input1 = totalSales.getText();
+			
+			double countyTax = Double.parseDouble(input1) * COUNTY_TAX;
+			double stateTax = Double.parseDouble(input1) * STATE_TAX;
+			double toatlTax = countyTax + stateTax;
+			
+			JOptionPane.showMessageDialog(null, "County tax: " + formatter.format(countyTax) +
+												"\nState tax: " + formatter.format(stateTax) +
+												"\nTotal sales tax: " + formatter.format(toatlTax), "Sales Tax", JOptionPane.INFORMATION_MESSAGE);
+			
+			System.exit(0);
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		new MonthlySalesTax();
+	}
+}

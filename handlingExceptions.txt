@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class PayrollDemo {
+
+	public static void main(String[] args) throws InvalidEmployeeName, InvalidEmployeeId, InvalidHours, InvalidPay
+	{
+		Payroll employee1 = new Payroll();
+		
+		Scanner input = new Scanner(System.in);
+		
+		try
+		{
+		System.out.println("What is the employees name???");
+		employee1.setName(input.nextLine());
+		}
+		catch(InvalidEmployeeName e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		try
+		{
+		System.out.println("What is the employees Id number???");
+		employee1.setIdNumber(input.nextInt());
+		}
+		catch(InvalidEmployeeId e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		try
+		{
+			System.out.println("What is your hourly pay???");
+			employee1.setHourlyPay(input.nextDouble());
+		}
+		catch(InvalidPay e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		try
+		{
+		System.out.println("How many hours did you work???");
+		employee1.setHoursWorked(input.nextInt());
+		}
+		catch(InvalidHours e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("Your grosspay for " + employee1.getName() + " is " + employee1.getGrossPay());
+		
+		input.close();
+	}
+
+}

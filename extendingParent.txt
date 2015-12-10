@@ -1,0 +1,67 @@
+import java.text.DecimalFormat;
+
+public class ProductionWorker extends Employee
+{
+	private int shift;
+	private double hourlyPay;
+	public static final int DAY_SHIFT = 1;
+	public static final int NIGHT_SHIFT = 2;
+	
+	ProductionWorker(String n, String num, String date, int sh, double rate)
+	{
+		super(n, num, date);	
+		shift = sh;
+		hourlyPay = rate;
+	}
+	
+	ProductionWorker()
+	{
+		super();
+		shift = DAY_SHIFT;
+		hourlyPay = 0.0;
+	}
+
+	public int getShift() 
+	{
+		return shift;
+	}
+
+	public void setShift(int shift) 
+	{
+		this.shift = shift;
+	}
+
+	public double getHourlyPay() 
+	{
+		return hourlyPay;
+	}
+
+	public void setHourlyPay(double hourlyPay)
+	{
+		this.hourlyPay = hourlyPay;
+	}
+	
+	public String toString()
+	{
+		DecimalFormat formatter = new DecimalFormat("$#,##0.00");
+		
+		String str = super.toString();
+		
+		str += "\nShift: ";
+		if (shift == DAY_SHIFT)
+		{
+			str += "Day";
+		}
+		else if (shift == NIGHT_SHIFT)
+		{
+			str += "Night";
+		}
+		else
+			str += "Invaild shift number";
+		
+		str += "\nHourly pay rate: " +
+				formatter.format(hourlyPay);
+		
+		return str;
+	}
+}

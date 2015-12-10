@@ -1,0 +1,86 @@
+public class Employee 
+{
+	private String employeeName;
+	private String employeeNumber;
+	private String hireDate;
+	
+	public Employee(String n, String num, String date)
+	{
+		employeeName = n;
+		setEmployeeNumber(num);
+		hireDate = date;
+	}
+	
+	public Employee()
+	{
+		employeeName = "";
+		employeeNumber = "";
+		hireDate = "";
+	}
+
+	public String getEmployeeName() 
+	{
+		return employeeName;
+	}
+
+	public void setEmployeeName(String employeeName) 
+	{
+		this.employeeName = employeeName;
+	}
+
+	public String getEmployeeNumber() 
+	{
+		return employeeNumber;
+	}
+
+	public void setEmployeeNumber(String e)
+	{
+		employeeNumber = e;
+		
+		/**if (isVaildEmpNum(e))
+			employeeNumber = e;
+		else
+			employeeNumber = "";**/
+	}
+
+	public String getHireDate()
+	{
+		return hireDate;
+	}
+
+	public void setHireDate(String hireDate) 
+	{
+		this.hireDate = hireDate;
+	}
+	
+	/**private boolean isVaildEmpNum(String e)
+	{
+		boolean status = true;
+		
+		if (e.length() != 5)
+		{
+			status = false;
+		}
+		else
+		{
+			if ((!Character.isDigit(e.charAt(0)))
+				(!Character.isDigit(e.charAt(1)))
+				(!Character.isDigit(e.charAt(2)))
+				(e.charAt(3) != '-')
+				(Character.toUpperCase(e.charAt(4)) < 'A')
+				(Character.toUpperCase(e.charAt(4)) < 'M'))
+				status = false;
+		}
+		
+		return status;
+	}**/
+	
+	public String toString()
+	{
+		String str = "Name: " + employeeName +
+					 "\nEmployee number: " + employeeNumber +
+					 "\nHire date: " + hireDate;
+		
+		return str;
+	}
+}
